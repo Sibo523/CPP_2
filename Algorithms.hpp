@@ -24,7 +24,7 @@ namespace ariel {
             static bool isSameColor(const Graph &g, std::vector<int> &colorArr, size_t u, size_t v);
             static bool isSelfLoop(const Graph &g, size_t u);
             static bool isNotColored(const Graph &g, std::vector<int> &colorArr, size_t u, size_t v);
-            static std::string BelmanFord(const Graph &g, size_t srcm, size_t des);
+            static std::string BelmanFord(const Graph &g, size_t srcm, size_t des,std::vector<size_t> &parent,size_t &i);
 
     };
 }

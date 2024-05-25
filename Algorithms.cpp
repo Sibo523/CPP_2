@@ -136,7 +136,7 @@ namespace ariel
     }
     // Function to find the shortest path between two vertices (Bellman-Ford algorithm)
     // if there's somewhere in teh graph negative cycle we will return that there's a negative cycle even if reach it
-    std::string Algorithms::BelmanFord(const Graph &g, size_t src, size_t des)
+    std::string Algorithms::BelmanFord(const Graph &g, size_t src, size_t des,std::vector<size_t> &parent,size_t &k)
     {
         size_t V = g.getVertices(); // amount of vertirces 
         if (V == 0) { 
@@ -145,7 +145,7 @@ namespace ariel
         
         // Create a vector to store the shortest distances from the source vertex
         std::vector<int> dist(g.getVertices(), INT_MAX);
-        std::vector<int> parent(g.getVertices(), -1);
+        // std::vector<int> parent(g.getVertices(), -1);
         // Set the distance of the source vertex to itself as 0
         dist[src] = 0;
 
@@ -173,6 +173,7 @@ namespace ariel
             {
                 if (g.getGraph()[u][v] != 0 && dist[u] != INT_MAX && dist[u] + g.getGraph()[u][v] < dist[v])
                 {
+                    k = v; // the vertex that is part of the negatve cycle
                     return "Graph contains negative weight cycle";
                 }
             }
@@ -196,7 +197,9 @@ namespace ariel
     // Function to find the shortest path between two vertices (Dijkstra's algorithm)
     std::string Algorithms::shortestPath(const Graph &g, size_t des, size_t src)
     {
-        return BelmanFord(g, src, des); //BF
+        std::vector<size_t> parent(g.getVertices(), INT_MAX);
+        size_t i =0;
+        return BelmanFord(g, src, des,parent,i); //BF
     }
 
     // Function to check if a graph is bipartite (uses BFS)
@@ -260,7 +263,19 @@ namespace ariel
     // Function to check for a negative cycle in a weighted graph (Bellman-Ford)
     bool Algorithms::negativeCycle(const Graph &g)
     {
-        return BelmanFord(g, 0, 0) == "Graph contains negative weight cycle"; // in BelmanFord we check for negative cycless
+        std::vector<size_t> parent(g.getVertices(), INT_MAX);
+        size_t i = 0;
+        if( BelmanFord(g, 0, 0,parent,i) == "Graph contains negative weight cycle"){
+            size_t j = i;
+            std::cout<<i<<" ";
+            i = parent[i];
+            while(i != j){
+                std::cout<<i<<" ";
+                i = parent[i];
+            }
+            return true;
+        } // in BelmanFord we check for negative cycless
+        return false;
     }
 
 } // namespace ariel

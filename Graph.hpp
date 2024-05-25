@@ -14,8 +14,11 @@ class Graph{
         std::vector<std::vector<int>> vec;
         int numOfVertices;
         bool directed;
+        void updateNumOfEdges();
+        bool submatrix(const std::vector<std::vector<int>> &vec1, const std::vector<std::vector<int>> &vec2) const;
     public:
         Graph();
+        Graph(size_t n);
         void loadGraph(const std::vector<std::vector<int>> &vec1);
         void printGraph() const;
         size_t getVertices() const;
@@ -59,9 +62,17 @@ class Graph{
     
     Graph operator--(int); // Post-decrement operator, decrements the graph by 1.
     
-    Graph operator*(int scalar) const; // Multiplies the graph by a scalar.
+    Graph operator*(double scalar) const; // Multiplies the graph by a scalar.
     
     Graph operator*(const Graph& other) const; // Multiplies this graph by another graph.
+    
+    Graph operator/=(int num);
+
+    Graph operator/(int num);
+    Graph operator*= (int num);
+
+    friend std::ostream& operator<<(std::ostream& os,Graph& g);//print the graph
+
 };
 }
 #endif //GRAPH_H
