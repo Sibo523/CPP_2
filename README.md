@@ -42,28 +42,28 @@ Stream Output: Utilize overloaded output stream operators for straightforward gr
 Quick Start
 To begin using the Graph Class Library in your project, follow these simple steps:
 
-1.Include the Library: Add the graph.h header file to your source code.
+1. Include the Library: Add the graph.h header file to your source code.
 ```
 #include "graph.h"
 ```
-2.Initialize a Graph: Create a new graph object with a specified number of vertices.
+2. Initialize a Graph: Create a new graph object with a specified number of vertices.
 
 ```
 ariel::Graph myGraph(5); // Initializes a graph with 5 vertices.
 ```
-3.Load Graph Data: Populate the graph using a matrix representation.
+3. Load Graph Data: Populate the graph using a matrix representation.
 ```
 std::vector<std::vector<int>> adjacencyMatrix = {{0, 1, 0}, {1, 0, 1}, {0, 1, 0}};
 myGraph.loadGraph(adjacencyMatrix);
 ```
-4.Perform Operations: Apply various operations to manipulate and analyze the graph.
+4. Perform Operations: Apply various operations to manipulate and analyze the graph.
 ```
 ariel::Graph anotherGraph(3);
 anotherGraph.loadGraph({{0, 1, 1}, {1, 0, 1}, {1, 1, 0}});
 
 ariel::Graph combinedGraph = myGraph + anotherGraph; // Combines two graphs.
 ```
-5.Print the Graph: Display the graph's structure using the overloaded output stream operator.
+5. Print the Graph: Display the graph's structure using the overloaded output stream operator.
 ```
 std::cout << combinedGraph << std::endl;
 ```
@@ -84,6 +84,7 @@ int main() {
     return 0;
 }
 ```
+
 # Algorithms
 
 `Algorithms` class withing the `ariel` namespace, offering a suite of static Algorithms that can be applied on the Graph object.
