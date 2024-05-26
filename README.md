@@ -29,6 +29,61 @@ The project uses a Makefile to automate the build process. Here are the main com
 - `./demo`: runs the demo exe file.
 - `./test`: Runs the test exe file.
 
+## Graph Class Library
+Welcome to the Graph Class Library, a comprehensive toolset for working with graphs in C++. Developed by Roi Sibony, this library offers extensive functionalities for creating, manipulating, and analyzing graphs, supporting both directed and undirected types.
+
+Key Features
+Graph Creation: Easily initialize graphs with a predefined number of vertices.
+Graph Manipulation: Load graph structures from matrices, print graph details, and access graph properties such as vertex count, edge count, and directionality.
+Arithmetic Operations: Perform addition, subtraction, multiplication, and division on graphs.
+Comparison Operators: Compare graphs to determine equality, inequality, and relative ordering.
+Increment/Decrement Operators: Modify graphs through increment and decrement operations.
+Stream Output: Utilize overloaded output stream operators for straightforward graph visualization.
+Quick Start
+To begin using the Graph Class Library in your project, follow these simple steps:
+
+1.Include the Library: Add the graph.h header file to your source code.
+```
+#include "graph.h"
+```
+2.Initialize a Graph: Create a new graph object with a specified number of vertices.
+
+```
+ariel::Graph myGraph(5); // Initializes a graph with 5 vertices.
+```
+3.Load Graph Data: Populate the graph using a matrix representation.
+```
+std::vector<std::vector<int>> adjacencyMatrix = {{0, 1, 0}, {1, 0, 1}, {0, 1, 0}};
+myGraph.loadGraph(adjacencyMatrix);
+```
+4.Perform Operations: Apply various operations to manipulate and analyze the graph.
+```
+ariel::Graph anotherGraph(3);
+anotherGraph.loadGraph({{0, 1, 1}, {1, 0, 1}, {1, 1, 0}});
+
+ariel::Graph combinedGraph = myGraph + anotherGraph; // Combines two graphs.
+```
+5.Print the Graph: Display the graph's structure using the overloaded output stream operator.
+```
+std::cout << combinedGraph << std::endl;
+```
+## Example
+```
+#include "graph.h"
+
+int main() {
+    ariel::Graph graphA(3);
+    graphA.loadGraph({{0, 1, 1}, {1, 0, 1}, {1, 1, 0}});
+
+    ariel::Graph graphB(3);
+    graphB.loadGraph({{0, 1, 0}, {1, 0, 1}, {0, 1, 0}});
+
+    ariel::Graph sumGraph = graphA + graphB;
+    std::cout << "Sum of Graph A and Graph B:\n" << sumGraph << std::endl;
+
+    return 0;
+}
+```
 # Algorithms
 
 `Algorithms` class withing the `ariel` namespace, offering a suite of static Algorithms that can be applied on the Graph object.
@@ -126,51 +181,4 @@ The `Algorithms` class encapsulates a collection of static methods that operate 
 - **Parameters**: A constant reference to a `Graph` object `g`, and two `size_t` values representing the source and destination nodes.
 - **Usage**: To find the shortest path between two nodes using the Bellman-Ford algorithm.
 
-
-# Graph
-
-`Graph` class withing the `ariel` namespace, providing simple implemantion of adjancacy matriix to represent a Graph.
-
-## Class Overview
-
-The `Graph` class encapsulates the structure and operations of a graph. It includes methods for loading graph data, printing the graph, retrieving the number of vertices and edges, accessing the graph's adjacency matrix, and checking if the graph is directed.
-
-## Class Members
-
-### `Public methods`
-
-- `numOfEdges`: Stores the number of edges in the graph.
-- `vec`: A 2D vector representing the adjacency matrix of the graph.
-- `numOfVertices`: Stores the number of vertices in the graph.
-- `directed`: A boolean flag indicating whether the graph is directed.
-
-
-### `Public members`
-
-- `Graph()`: Default constructor initializes an empty graph.
-- `loadGraph(const std::vector<std::vector<int>> vec1)`: Loads the graph from a 2D vector representation.
-- `printGraph() const`: Prints the graph to the console.
-- `getVertices() const`: Returns the number of vertices in the graph.
-- `getEdges() const`: Returns the number of edges in the graph.
-- `getGraph() const`: Returns the graph's adjacency matrix.
-- `isDirected() const`: Returns whether the graph is directed.
-
-## Usage
-
-To use the `Graph` class, you need to include the header file in your source code and create instances of the `Graph` class. Here's a simple example demonstrating how to create a graph, add edges, and print it:
-
-// Adding edges to the graph
-graph.loadGraph({{0, 1}, {1, 2}, {2, 3}, {3, 0}}); // Creates a directed graph with 4 vertices and 4 edges
-// Printing the graph
-graph.printGraph();
-return 0;
-
-
-
-This example demonstrates creating a directed graph with 4 vertices and 4 edges, then printing the graph to the console. The `loadGraph` method is used to populate the graph with edges, and `printGraph` displays the graph's structure.
-
-The `Graph` class provides a solid foundation for graph-based algorithms and data structures, making it easy to implement complex graph operations and algorithms.
-
-### `P.S:I got help from phind to create this readme`
- 
 
