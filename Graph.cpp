@@ -26,7 +26,6 @@ namespace ariel
 
             throw std::invalid_argument("Invalid graph: The graph is not a square matrix.");
 
-            return;
         }
         vec = vec1;
         numOfVertices = vec1.size();
