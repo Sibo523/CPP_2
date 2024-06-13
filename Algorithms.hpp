@@ -17,7 +17,6 @@ namespace ariel {
             static std::string isBipartite(const Graph &g);
             static bool negativeCycle(const Graph &g); 
         private:
-            //dfs helper is a chuncky boy
             static bool dfsCycleHelper(const Graph &g, std::vector<bool> &visited, std::vector<bool> &recStack, size_t vertex, size_t parent, std::string &result);
             static void dfs(const Graph &g, std::vector<bool> &visited, size_t vertex);
             static void makeSymmetric(Graph &g);
