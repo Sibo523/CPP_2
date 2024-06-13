@@ -23,6 +23,8 @@ struct ReporterCounter : public ConsoleReporter
             std::cout << "you have written test cases:"<<run_stats.numAsserts << std::endl;
             return_code = 1;
         }
+        ConsoleReporter::test_run_end(run_stats);
+
     }
 };
 

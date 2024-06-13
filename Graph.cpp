@@ -184,6 +184,8 @@ namespace ariel
     // Overload the -= operator
     Graph &Graph::operator-=(const Graph &other)
     {
+        theBigIf(other);
+
         *this+=-other;
         return *this;
     }
@@ -216,6 +218,8 @@ namespace ariel
     // Overload the > operator
     bool Graph::operator>(const Graph &other) const
     {
+        theBigIf(other);
+
         if(submatrix(vec, other.vec)){
             return true;
         }
@@ -230,6 +234,8 @@ namespace ariel
     // Overload the >= operator
     bool Graph::operator>=(const Graph &other) const
     {
+        theBigIf(other);
+
         if (*this > other || *this == other)
         {
             return true;
@@ -239,17 +245,22 @@ namespace ariel
     // Overload the < operator
     bool Graph::operator<(const Graph &other) const
     {
+        theBigIf(other);
+
         return other > *this;
     }
     // need to fix
     //  Overload the <= operator
     bool Graph::operator<=(const Graph &other) const
     {
+        theBigIf(other);
+
         return other >= *this;
     }
     // Overload the == operator
     bool Graph::operator==(const Graph &other) const
     {
+        theBigIf(other);
         if(submatrix(vec, other.vec) && submatrix(other.vec, vec)){
             return true;
         }
@@ -259,6 +270,8 @@ namespace ariel
     // Overload the != operator
     bool Graph::operator!=(const Graph &other) const
     {
+        theBigIf(other);
+
         return !(*this == other);
     }
     // Overload the ++ operator
@@ -308,6 +321,7 @@ namespace ariel
     // Overload the * operator
     Graph Graph::operator*(double scalar) const
     {
+        
         std::vector<std::vector<int>> newVec = vec;
         for (size_t i = 0; i < numOfVertices; ++i)
         {
@@ -342,6 +356,10 @@ namespace ariel
     }    // Overload the << operator
     Graph Graph::operator/(int num){
         std::vector<std::vector<int>> newVec = vec;
+        if (num == 0)
+        {
+            throw std::invalid_argument("Invalid operation: Division by zero.");
+        }
         for (size_t i = 0; i < numOfVertices; ++i)
         {
             for (size_t j = 0; j < numOfVertices; ++j)
