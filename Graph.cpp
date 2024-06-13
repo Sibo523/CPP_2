@@ -354,7 +354,7 @@ namespace ariel
         newGraph.loadGraph(result);
         return newGraph;
     }    // Overload the << operator
-    Graph Graph::operator/(int num){
+    Graph Graph::operator/(int num){ //technically I could use * but didn't want
         std::vector<std::vector<int>> newVec = vec;
         if (num == 0)
         {
