@@ -269,12 +269,6 @@ TEST_CASE("Check throws"){
     CHECK_THROWS((void)(g1-=g2));
     CHECK_THROWS((void)(g1*g2));
     CHECK_THROWS((void)(g2*g1));
-    CHECK_THROWS((void)(g1==g2));
-    CHECK_THROWS((void)(g1!=g2));
-    CHECK_THROWS((void)(g1>g2));
-    CHECK_THROWS((void)(g1<g2));
-    CHECK_THROWS((void)(g1>=g2));
-    CHECK_THROWS((void)(g1<=g2));
     CHECK_THROWS((void)(g1/0));
     CHECK_THROWS((void)(g1/=0));
 

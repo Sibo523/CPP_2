@@ -217,7 +217,6 @@ namespace ariel
     // Overload the > operator
     bool Graph::operator>(const Graph &other) const
     {
-        theBigIf(other);
 
         if(submatrix(vec, other.vec)){
             return true;
@@ -233,7 +232,6 @@ namespace ariel
     // Overload the >= operator
     bool Graph::operator>=(const Graph &other) const
     {
-        theBigIf(other);
 
         if (*this > other || *this == other)
         {
@@ -244,7 +242,6 @@ namespace ariel
     // Overload the < operator
     bool Graph::operator<(const Graph &other) const
     {
-        theBigIf(other);
 
         return other > *this;
     }
@@ -252,14 +249,12 @@ namespace ariel
     //  Overload the <= operator
     bool Graph::operator<=(const Graph &other) const
     {
-        theBigIf(other);
 
         return other >= *this;
     }
     // Overload the == operator
     bool Graph::operator==(const Graph &other) const
     {
-        theBigIf(other);
         if(submatrix(vec, other.vec) && submatrix(other.vec, vec)){
             return true;
         }
@@ -269,7 +264,6 @@ namespace ariel
     // Overload the != operator
     bool Graph::operator!=(const Graph &other) const
     {
-        theBigIf(other);
 
         return !(*this == other);
     }
